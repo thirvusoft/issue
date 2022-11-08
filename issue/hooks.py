@@ -64,7 +64,7 @@ app_license = "MIT"
 # ------------
 
 # before_install = "issue.install.before_install"
-# after_install = "issue.install.after_install"
+after_install = "issue.customer_issue.property_setter.after_install"
 
 # Uninstallation
 # ------------
@@ -102,13 +102,14 @@ app_license = "MIT"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-#	"*": {
-#		"on_update": "method",
-#		"on_cancel": "method",
-#		"on_trash": "method"
-#	}
-# }
+doc_events = {
+	"Issue": {
+		"validate": "issue.customer_issue.custom.py.issue.user_list"
+	},
+    "Task": {
+		"on_update":"issue.customer_issue.custom.py.task.on_update"
+	}
+}
 
 # Scheduled Tasks
 # ---------------
